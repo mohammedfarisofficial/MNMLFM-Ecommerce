@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Image, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 
 interface Props {
@@ -18,7 +18,7 @@ const SocialLoginButton = ({icon, text}: Props) => {
         borderWidth: 0.3,
         borderColor: '#929198',
         marginVertical: 8,
-        overflow:"hidden"
+        overflow: 'hidden',
       }}
       onPress={() => {}}>
       <Image
@@ -34,5 +34,3 @@ const SocialLoginButton = ({icon, text}: Props) => {
 };
 
 export default SocialLoginButton;
-
-const styles = StyleSheet.create({});

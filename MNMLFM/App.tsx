@@ -13,7 +13,6 @@ import RootStackNavigation from './src/navigation/RootStackNavigation';
 
 //persist storage
 const persistor = persistStore(store);
-
 function App(): JSX.Element {
   return (
     <StripeProvider publishableKey="pk_test_51NieQPSA1068KmYjGWKcNnGk3VTORCWW9Sb08mGVoLAf5dqkk4sOvRDBBE2LILCebghRp2salO0H2hQzYQAHWqVN00sLHCjWkR">

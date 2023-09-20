@@ -15,7 +15,7 @@ import {useSelector} from 'react-redux';
 import {productItem} from './Home';
 import ProductHeader from '../components/ProductHeader';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {CategoryStackParams} from '../../App';
+import { CategoryStackParams } from '../navigation/CategoryStackNavigation';
 
 const {width, height} = Dimensions.get('window');
 
@@ -27,7 +27,6 @@ const ListCategory = ({navigation, route}: Props) => {
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
-    // const filterProduct = products?.filter(product=> product?.category===categoryId)
     const filterByCategory = products?.filter(
       product => product?.category === categoryId,
     );

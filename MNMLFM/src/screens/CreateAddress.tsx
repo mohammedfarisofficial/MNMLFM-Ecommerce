@@ -1,10 +1,6 @@
 import {
-  Button,
   SafeAreaView,
   StyleSheet,
-  Text,
-  TextInput,
-  View,
 } from 'react-native';
 import React, {useState} from 'react';
 import Header from '../components/Header';
@@ -13,10 +9,13 @@ import InputBox from '../components/InputBox';
 import {useDispatch, useSelector} from 'react-redux';
 import LargeButton from '../components/Buttons/LargeButton';
 import {addAddress} from '../state/reducers/addressSlice';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import { CartStackParams } from '../navigation/CartStackNavigation';
 
-const CreateAddress = ({navigation,route}) => {
+type Props = NativeStackScreenProps<CartStackParams,"CreateAddress">
+
+const CreateAddress = ({navigation,route}:Props) => {
   const {name: defaultName} = useSelector(state => state.auth.user);
-  const {cart} = useSelector(state => state.cart);
   const [name, setName] = useState(defaultName);
   const [phone, setPhone] = useState();
   const [state, setState] = useState('Kerala');
@@ -39,7 +38,6 @@ const CreateAddress = ({navigation,route}) => {
     };
     dispatch(addAddress(newOrder));
     navigation.goBack()
-    // console.log(JSON.stringify(obj1) === JSON.stringify(obj2)); 
   };
   return (
     <SafeAreaView style={styles.rootContainer}>

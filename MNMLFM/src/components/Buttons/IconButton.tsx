@@ -3,11 +3,10 @@ import React from 'react';
 import { sendIcon } from '../../contants/icons';
 
 interface Props {
-  name: string;
   onPress: () => void;
 }
 
-const IconButton = ({onPress, name}: Props) => {
+const IconButton = ({onPress}: Props) => {
   return (
     <TouchableOpacity
       onPress={onPress}

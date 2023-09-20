@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Dimensions,
   Image,
-  TouchableOpacity,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 
@@ -15,21 +14,23 @@ import {LogoBlack} from '../contants/logo';
 import {orderIcon, signOutIcon, heartSolidIcon} from '../contants/icons';
 import {useDispatch, useSelector} from 'react-redux';
 import {setLogout} from '../state/reducers/authSlice';
-
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {UserStackParams} from '../navigation/UserStackNavigation';
 
 const {width} = Dimensions.get('window');
 
-const User = ({navigation}) => {
-  const { user} = useSelector(state=>state.auth)
-  const dispatch = useDispatch();
+type Props = NativeStackScreenProps<UserStackParams, 'User'>;
 
+const User = ({navigation}: Props) => {
+  const {user} = useSelector(state => state.auth);
+  const dispatch = useDispatch();
 
   const logOutHandler = () => {
     dispatch(setLogout);
     navigation.navigate('Login');
   };
 
-  console.log(user?.imageUrl)
+  console.log(user?.imageUrl);
 
   return (
     <SafeAreaView style={styles.rootContainer}>
@@ -42,7 +43,7 @@ const User = ({navigation}) => {
             style={{width: '100%', height: '100%', borderRadius: 50}}
             resizeMode="cover"
             source={{
-              uri: user?.imageUrl
+              uri: user?.imageUrl,
             }}
           />
         </View>
@@ -57,7 +58,7 @@ const User = ({navigation}) => {
           }}>
           {user?.name}
         </Text>
-        <SmallButton name="Edit Profile" onPress={()=>{}} />
+        <SmallButton name="Edit Profile" onPress={() => {}} />
       </View>
       <UserItem
         icon={orderIcon}

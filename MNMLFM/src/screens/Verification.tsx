@@ -14,14 +14,25 @@ import LargeButton from '../components/Buttons/LargeButton';
 import axios from 'axios';
 import {BASE_URL} from '@env';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParams} from '../../App';
+import {RootStackParams} from '../navigation/RootStackNavigation';
 
 type Props = NativeStackScreenProps<RootStackParams, 'Verification'>;
+type OTPType = {
+  first: string;
+  second: string;
+  third: string;
+  forth: string;
+};
 
 const Verification = ({navigation, route}: Props) => {
   const {email, userId} = route.params.data;
-  const [resendOtp, setResendOtp] = useState(false);
-  const [otp, setOtp] = useState({first: '', second: '', third: '', forth: ''});
+  const [resendOtp, setResendOtp] = useState<boolean>(false);
+  const [otp, setOtp] = useState<OTPType>({
+    first: '',
+    second: '',
+    third: '',
+    forth: '',
+  });
 
   const firstNumRef = useRef();
   const secondNumRef = useRef();
@@ -81,7 +92,7 @@ const Verification = ({navigation, route}: Props) => {
         style={styles.rootContainer}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <View style={styles.otpContainer}>
-          <View style={{ width: '100%'}}>
+          <View style={{width: '100%'}}>
             <Text style={{fontSize: 25, fontFamily: 'PlusJakartaSans-Bold'}}>
               Verify
             </Text>
@@ -96,60 +107,60 @@ const Verification = ({navigation, route}: Props) => {
               </Text>
             </Text>
           </View>
-         <View style={{flexDirection: "row"}}>
-         <View style={styles.otpBox}>
-            <TextInput
-              style={styles.otpText}
-              keyboardType="number-pad"
-              maxLength={1}
-              ref={firstNumRef}
-              onChangeText={text => {
-                setOtp({...otp, first: text});
-                text && secondNumRef.current.focus();
-              }}
-            />
+          <View style={{flexDirection: 'row'}}>
+            <View style={styles.otpBox}>
+              <TextInput
+                style={styles.otpText}
+                keyboardType="number-pad"
+                maxLength={1}
+                ref={firstNumRef}
+                onChangeText={text => {
+                  setOtp({...otp, first: text});
+                  text && secondNumRef.current.focus();
+                }}
+              />
+            </View>
+            <View style={styles.otpBox}>
+              <TextInput
+                style={styles.otpText}
+                keyboardType="number-pad"
+                maxLength={1}
+                ref={secondNumRef}
+                onChangeText={text => {
+                  setOtp({...otp, second: text});
+                  text
+                    ? thirdNumRef.current.focus()
+                    : firstNumRef.current.focus();
+                }}
+              />
+            </View>
+            <View style={styles.otpBox}>
+              <TextInput
+                style={styles.otpText}
+                keyboardType="number-pad"
+                maxLength={1}
+                ref={thirdNumRef}
+                onChangeText={text => {
+                  setOtp({...otp, third: text});
+                  text
+                    ? forthNumRef.current.focus()
+                    : secondNumRef.current.focus();
+                }}
+              />
+            </View>
+            <View style={styles.otpBox}>
+              <TextInput
+                style={styles.otpText}
+                keyboardType="number-pad"
+                maxLength={1}
+                ref={forthNumRef}
+                onChangeText={text => {
+                  setOtp({...otp, forth: text});
+                  !text && thirdNumRef.current.focus();
+                }}
+              />
+            </View>
           </View>
-          <View style={styles.otpBox}>
-            <TextInput
-              style={styles.otpText}
-              keyboardType="number-pad"
-              maxLength={1}
-              ref={secondNumRef}
-              onChangeText={text => {
-                setOtp({...otp, second: text});
-                text
-                  ? thirdNumRef.current.focus()
-                  : firstNumRef.current.focus();
-              }}
-            />
-          </View>
-          <View style={styles.otpBox}>
-            <TextInput
-              style={styles.otpText}
-              keyboardType="number-pad"
-              maxLength={1}
-              ref={thirdNumRef}
-              onChangeText={text => {
-                setOtp({...otp, third: text});
-                text
-                  ? forthNumRef.current.focus()
-                  : secondNumRef.current.focus();
-              }}
-            />
-          </View>
-          <View style={styles.otpBox}>
-            <TextInput
-              style={styles.otpText}
-              keyboardType="number-pad"
-              maxLength={1}
-              ref={forthNumRef}
-              onChangeText={text => {
-                setOtp({...otp, forth: text});
-                !text && thirdNumRef.current.focus();
-              }}
-            />
-          </View>
-         </View>
         </View>
         {resendOtp && (
           <TouchableOpacity onPress={resendOtpHandler}>
