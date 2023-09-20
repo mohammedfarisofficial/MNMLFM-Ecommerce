@@ -35,9 +35,19 @@ MNMLFM is a full-stack e-commerce application built with the MERN stack (MongoDB
 - **Backend**:
   - Node.js with Express.js
   - MongoDB for the database
-  - Mongoose for modeling data
+  - Mongoose for modelling data
   - JWT for authentication
   - Stripe API for payment processing
+
+## Screenshots
+<img width="479" alt="Screenshot 2023-09-20 at 5 08 33 PM" src="https://github.com/mohammedfarisofficial/MNMLFM-Ecommerce/assets/68058442/bf4468a0-d9dd-47b6-8f59-9885253cac85">
+<img width="479" alt="Screenshot 2023-09-20 at 5 09 06 PM" src="https://github.com/mohammedfarisofficial/MNMLFM-Ecommerce/assets/68058442/2b69b28e-7299-4b47-b577-0cc4507aca34">
+<img width="479" alt="Screenshot 2023-09-20 at 5 09 18 PM" src="https://github.com/mohammedfarisofficial/MNMLFM-Ecommerce/assets/68058442/c2efc82a-3405-4011-af8f-4187b8920da7">
+<img width="479" alt="Screenshot 2023-09-20 at 5 09 59 PM" src="https://github.com/mohammedfarisofficial/MNMLFM-Ecommerce/assets/68058442/9be58dbc-a004-47d8-ba10-be2906c4b2a7">
+<img width="479" alt="Screenshot 2023-09-20 at 5 10 31 PM" src="https://github.com/mohammedfarisofficial/MNMLFM-Ecommerce/assets/68058442/435de634-4049-41cf-b3cf-f86501c62e06">
+<img width="479" alt="Screenshot 2023-09-20 at 5 12 30 PM" src="https://github.com/mohammedfarisofficial/MNMLFM-Ecommerce/assets/68058442/db7a81d2-d4c8-411a-8836-57295b08edfb">
+<img width="479" alt="Screenshot 2023-09-20 at 5 16 29 PM" src="https://github.com/mohammedfarisofficial/MNMLFM-Ecommerce/assets/68058442/fd5d668f-36c3-41e3-87e8-739df15fb5be">
+
 
 ## Getting Started
 
