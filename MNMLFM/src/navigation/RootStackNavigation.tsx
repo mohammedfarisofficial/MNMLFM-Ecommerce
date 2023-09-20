@@ -5,6 +5,7 @@ import Login from '../screens/Login';
 import Verification from '../screens/Verification';
 import Product from '../screens/Product';
 import BottomTabNavigation from './BottomTabNavigation';
+import Cart from '../screens/Cart';
 
 export type RootStackParams = {
   Welcome: undefined;

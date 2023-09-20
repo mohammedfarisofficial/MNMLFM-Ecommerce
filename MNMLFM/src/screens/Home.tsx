@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {BottomTabParams, RootStackParams} from '../../App';
 import HeaderWithSearch from '../components/HeaderWithSearch';
 import BillBoard from '../components/BillBoard';
 import ProductHeader from '../components/ProductHeader';
@@ -16,14 +15,11 @@ import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
 import {setProducts} from '../state/reducers/productSlice';
 import {BASE_URL} from '@env';
+import { BottomTabParams } from '../navigation/BottomTabNavigation';
 
 const {width, height} = Dimensions.get('window');
 
 type Props = NativeStackScreenProps<BottomTabParams, 'Home'>;
-
-type ProductScreenParams = {
-  productId: string;
-};
 
 export type billBoardItems = {
   headText1: string;
@@ -89,20 +85,13 @@ const Home = ({navigation}: Props) => {
     fetchProducts();
   }, []);
 
-  // const handlePresentPress = (student) => {
-  //   bottomRef.current.present();
-  // };
-  // const handleClose = () => bottomRef.current.dismiss();
-
-  // const snapPoints = useMemo(() => ['25%', '25%'], []);
-
   return (
     <SafeAreaView style={styles.rootContainer}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <HeaderWithSearch
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
-          rightAction={() => navigation.navigate('Cart')}
+          rightAction={() => navigation.navigate('CartStackNavigation')}
           isCart
           isActive={isActive}
           label="Search your style"

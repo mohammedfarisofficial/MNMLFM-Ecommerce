@@ -1,5 +1,4 @@
 import {
-  Button,
   Dimensions,
   FlatList,
   SafeAreaView,
@@ -15,10 +14,14 @@ import {BASE_URL} from '@env';
 import axios from 'axios';
 import OrderItem from '../components/OrderItem';
 import Loading from '../components/Loading';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {UserStackParams} from '../navigation/UserStackNavigation';
 
 const {width, height} = Dimensions.get('window');
 
-const Orders = ({navigation}) => {
+type Props = NativeStackScreenProps<UserStackParams, 'Orders'>;
+
+const Orders = ({navigation}: Props) => {
   const {_id: userId} = useSelector(state => state.auth.user);
   const {orders} = useSelector(state => state.order);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -51,7 +54,7 @@ const Orders = ({navigation}) => {
         <Loading />
       ) : (
         <FlatList
-        showsVerticalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}
           contentContainerStyle={styles.itemsContainer}
           data={orders}
           renderItem={({item}) => <OrderItem {...item} />}

@@ -14,10 +14,10 @@ import CatergoryCard from '../components/CatergoryCard';
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import {setCategory} from '../state/reducers/categorySlice';
-import {BottomTabParams, CategoryStackParams} from '../../App';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {BASE_URL} from '@env';
 import Loading from '../components/Loading';
+import { CategoryStackParams } from '../navigation/CategoryStackNavigation';
 
 const {width, height} = Dimensions.get('window');
 

@@ -7,19 +7,11 @@ import {
   FlatList,
   Dimensions,
   TouchableOpacity,
-  Button,
   Animated,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Header from '../components/Header';
-import {
-  backBtn,
-  cartIcon,
-  location,
-  menuDots,
-  starIcon,
-  upIcon,
-} from '../contants/icons';
+import {menuDots, upIcon} from '../contants/icons';
 import CartItem from '../components/CartItem';
 import LargeButton from '../components/Buttons/LargeButton';
 import {useDispatch, useSelector} from 'react-redux';
@@ -29,8 +21,8 @@ import {
   removeItem,
 } from '../state/reducers/cartSlice';
 import AddressCard from '../components/AddressCard';
-import {createOrder} from '../state/reducers/orderSlice';
-import Loading from '../components/Loading';
+import {CartStackParams} from '../navigation/CartStackNavigation';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 export type cartItem = {
   productId: string;
@@ -43,9 +35,10 @@ export type cartItem = {
 };
 
 const {width, height} = Dimensions.get('window');
-const Cart = ({navigation}) => {
+type Props = NativeStackScreenProps<CartStackParams, 'Cart'>;
+
+const Cart = ({navigation}: Props) => {
   const {cart} = useSelector(state => state.cart);
-  const {user} = useSelector(state => state.auth);
   const {currentAddress: isAddressExist} = useSelector(state => state.address);
   const {currentAddress: address} = useSelector(state => state.address);
   const [totalPrice, setTotalPrice] = useState<number>(0);
@@ -111,7 +104,7 @@ const Cart = ({navigation}) => {
     cart.forEach((item: cartItem) => {
       calculatedSubTotal += item.price * item.qty;
     });
-    setDeliveryCharge(cart.length === 0 ? 0 : 10.00);
+    setDeliveryCharge(cart.length === 0 ? 0 : 10.0);
     setSubTotal(calculatedSubTotal);
     setTotalPrice(calculatedSubTotal + deliveryCharge);
   }, [cart, deliveryCharge]);
@@ -166,7 +159,10 @@ const Cart = ({navigation}) => {
       ) : (
         <>
           <Text style={{marginTop: 100}}>Empty Cart</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('BottomTabNavigation', {screen: 'Home'})
+            }>
             <Text style={{fontSize: 12}}>
               Go to <Text style={{fontWeight: 600}}>Home</Text> page
             </Text>

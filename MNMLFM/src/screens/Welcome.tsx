@@ -1,19 +1,9 @@
 import {View, StyleSheet, FlatList, Dimensions, Animated} from 'react-native';
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParams} from '../../App';
 import LargeButton from '../components/Buttons/LargeButton';
 import OnBoardCard from '../components/OnBoardCard';
-
-type Props = NativeStackScreenProps<RootStackParams, 'Welcome'>;
-
-export interface IBoard {
-  id: string;
-  t1: string;
-  t2: string;
-  desc: string;
-  imageURL: string;
-}
+import { RootStackParams } from '../navigation/RootStackNavigation';
 
 const BOARDS: IBoard[] = [
   {
@@ -41,6 +31,17 @@ const BOARDS: IBoard[] = [
       'https://images.unsplash.com/photo-1495994458560-6f9d0636cc8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=754&q=80',
   },
 ];
+
+type Props = NativeStackScreenProps<RootStackParams, 'Welcome'>;
+export interface IBoard {
+  id: string;
+  t1: string;
+  t2: string;
+  desc: string;
+  imageURL: string;
+}
+
+
 
 const {width} = Dimensions.get('window');
 

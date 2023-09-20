@@ -22,7 +22,6 @@ import ReadMore from '@fawazahmed/react-native-read-more';
 import SmallButton from '../components/Buttons/SmallButton';
 import ProductCard from '../components/ProductCard';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParams} from '../../App';
 import {useDispatch, useSelector} from 'react-redux';
 import {addItem} from '../state/reducers/cartSlice';
 import {
@@ -33,10 +32,9 @@ import {cartItem} from './Cart';
 import {productItem} from './Home';
 import ReviewItem from '../components/ReviewItem';
 import WriteReview from '../components/WriteReview';
+import { RootStackParams } from '../navigation/RootStackNavigation';
 
 const {width, height} = Dimensions.get('window');
-
-// const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 
 type Props = NativeStackScreenProps<RootStackParams, 'Product'>;
 

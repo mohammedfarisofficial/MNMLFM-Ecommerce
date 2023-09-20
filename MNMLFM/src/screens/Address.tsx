@@ -5,8 +5,11 @@ import {addIcon, backBtn} from '../contants/icons';
 import AddressCard from '../components/AddressCard';
 import {useDispatch, useSelector} from 'react-redux';
 import {setCurrent} from '../state/reducers/addressSlice';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {CartStackParams} from '../navigation/CartStackNavigation';
 
-const Address = ({navigation}) => {
+type Props = NativeStackScreenProps<CartStackParams, 'Address'>;
+const Address = ({navigation}: Props) => {
   const {addressList} = useSelector(state => state.address);
   const {currentAddress} = useSelector(state => state.address);
 
@@ -30,7 +33,7 @@ const Address = ({navigation}) => {
             if (item === currentAddress) {
               return (
                 <AddressCard
-                key={index}
+                  key={index}
                   itemKey={index * Math.random()}
                   isAddress
                   isCurrent
@@ -44,7 +47,7 @@ const Address = ({navigation}) => {
             } else
               return (
                 <AddressCard
-                key={index}
+                  key={index}
                   itemKey={index * Math.random()}
                   isAddress
                   onLongPress={() =>

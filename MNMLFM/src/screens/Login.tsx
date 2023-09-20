@@ -20,7 +20,6 @@ import {
 } from '../contants/icons';
 import SocialLoginButton from '../components/Buttons/SocialLoginButton';
 import {LogoBlack} from '../contants/logo';
-import {RootStackParams} from '../../App';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {z} from 'zod';
@@ -35,6 +34,7 @@ import {setLogin} from '../state/reducers/authSlice';
 import {BASE_URL} from '@env';
 import {useState} from 'react';
 import Loading from '../components/Loading';
+import { RootStackParams } from '../navigation/RootStackNavigation';
 
 const {width} = Dimensions.get('window');
 
